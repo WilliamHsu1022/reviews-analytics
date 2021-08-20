@@ -21,3 +21,38 @@ for d in data:
 		new.append(d) 
 print('一共有', len(new), '比留言長度小於100')
 
+
+good = []
+for d in data:
+	if 'good' in d:
+		good.append(d)
+print('一共有', len(good), '筆留言提到good')
+
+
+
+#文字計數
+
+wc = {}
+for d in data:
+	words = d.split()
+	for word in words:
+		if word in wc:
+			wc[word] += 1
+		else:
+			wc[word] = 1
+
+for word in wc:
+	if wc[word] > 1000000:
+		print(word, wc[word])
+
+
+while True:
+	word = input('請問你想查什麼字: ')
+	if word == 'q':
+		break
+	if word in wc:
+		print(word, '出現過的次數為: ', wc[word])
+	else:
+		print('word not found')
+
+
